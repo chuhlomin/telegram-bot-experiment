@@ -1,0 +1,17 @@
+{
+  "name": "chuhlomin/telegram-bot-experiment",
+  "description": "Nothing to see here move along",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Konstantin Chukhlomin",
+      "email": "chuhlomin@gmail.com"
+    }
+  ],
+  "require": {
+    "irazasyed/telegram-bot-sdk": "^2.0",
+    "symfony/yaml": "^3.0",
+    "monolog/monolog": "^1.17"
+  }
+}
