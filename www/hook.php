@@ -5,28 +5,28 @@ define('BASEDIR', __DIR__ . '/..');
 include BASEDIR . '/vendor/autoload.php';
 include BASEDIR . '/src/bootstrap.php';
 
-// process user state
+try {
+    $update = $telegram->getWebhookUpdates();
+    $chatID = $update['message']['chat']['id'];
 
-$telegram->sendChatAction(
-    [
-        'chat_id' => 4885399,
-        'action' => 'typing'
-    ]
-);
+    // process user state
+    
+    $message = 'Hey, ' . $update['message']['chat']['first_name'];
+    $options = [
+        ['Hey']
+    ];
 
-sleep(5); // todo: calculate, avg 200 words per minute
-
-$response = $telegram->sendMessage([
-    'chat_id' => 4885399,
-    'text' => 'Hello World',
-    'reply_markup' => $telegram->replyKeyboardMarkup(
-        [
-            'keyboard' => [
-                ['one', 'two', 'three'],
-                ['four']
-            ],
-            'resize_keyboard' => true,
-            'one_time_keyboard' => true,
-        ]
-    )
-]);
+    $response = $telegram->sendMessage([
+        'chat_id' => $chatID,
+        'text' => $message,
+        'reply_markup' => $telegram->replyKeyboardMarkup(
+            [
+                'keyboard' => $options,
+                'resize_keyboard' => false,
+                'one_time_keyboard' => true,
+            ]
+        )
+    ]);
+} catch (\Exception $e) {
+    $message = 'Error...';
+}
