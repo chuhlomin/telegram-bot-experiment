@@ -36,12 +36,12 @@ class State
         $user = $this->state['user'];
         $options = array_map(
             function ($item) {
-                return $item['text'];
+                return [$item['text']];
             },
             $user
         );
         
-        return [array_values($options)];
+        return array_values($options);
     }
 
     public function getFollowup()

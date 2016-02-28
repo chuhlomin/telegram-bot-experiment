@@ -87,7 +87,7 @@ try {
 
         // avg person write 250 words in a minute -> 250 words in a 60 sec -> 4.16666667 in sec
         // but it's too slow for UX, so 2 sec
-        sleep(str_word_count($message) / 2);
+        sleep(min(str_word_count($message) / 2, 3));
 
         if ($isLastMessage) {
             $response = $telegram->sendMessage([

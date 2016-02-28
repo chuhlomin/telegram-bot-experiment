@@ -28,7 +28,7 @@
       "bot": "The company’s lawyers are preparing to submit a formal response to a court order that it help the F.B.I. unlock an iPhone, used by a mass shooter, by Friday. Apple says it will take the dispute all the way to the Supreme Court.",
       "user": {
         "7": {
-          "text": "Next",
+          "text": "next",
           "followup": "8"
         }
       }
