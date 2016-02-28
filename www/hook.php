@@ -78,19 +78,22 @@ try {
         $monolog->addDebug(sprintf('Is last: %s', var_export($isLastMessage, true)));
         $monolog->addDebug(sprintf('Options are: %s', json_encode($options)));
 
-        $response = $telegram->sendChatAction(
-            [
-                'chat_id' => $chatID,
-                'action' => 'typing'
-            ]
-        );
-
         // avg person write 250 words in a minute -> 250 words in a 60 sec -> 4.16666667 in sec
         // but it's too slow for UX, so 2 sec
-        sleep(min(str_word_count($message) / 2, 3));
+        $typingType = min(str_word_count($message) / 2, 3);
+
+        if ($typingType > 1) { // with less amount of seconds you will not notice that "typing" action
+            $telegram->sendChatAction(
+                [
+                    'chat_id' => $chatID,
+                    'action' => 'typing'
+                ]
+            );
+            sleep($typingType);
+        }
 
         if ($isLastMessage) {
-            $response = $telegram->sendMessage([
+            $telegram->sendMessage([
                 'chat_id' => $chatID,
                 'text' => $message,
                 'reply_markup' => $telegram->replyKeyboardMarkup(
@@ -102,7 +105,7 @@ try {
                 )
             ]);
         } else {
-            $response = $telegram->sendMessage([
+            $telegram->sendMessage([
                 'chat_id' => $chatID,
                 'text' => $message,
                 'reply_markup' => $telegram->replyKeyboardHide(
