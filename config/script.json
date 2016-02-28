@@ -1,0 +1,94 @@
+{
+  "name": "Morning Briefing",
+  "key": "morning-briefing-2016-02-27",
+  "start": "1",
+  "elements": {
+    "1": {
+      "bot": "Good morning.",
+      "followup": "2"
+    },
+    "2": {
+      "bot": "Here’s what you need to know",
+      "followup": "3"
+    },
+    "3": {
+      "bot": " Apple engineers are developing new security measures that would make it harder for the government to break into a locked iPhone.",
+      "followup": "4",
+      "user": {
+        "4": {
+          "text": "yeah?",
+          "followup": "6"
+        },
+        "5": {
+          "text": "next",
+          "followup": "8"
+        }
+      }
+    },
+    "6": {
+      "bot": "The company’s lawyers are preparing to submit a formal response to a court order that it help the F.B.I. unlock an iPhone, used by a mass shooter, by Friday. Apple says it will take the dispute all the way to the Supreme Court.",
+      "user": {
+        "7": {
+          "text": "Next",
+          "followup": "8"
+        }
+      }
+    },
+    "8": {
+      "bot": " 🇺🇸 Debate night! The five remaining Republican candidates — Donald J. Trump, Ted Cruz, Marco Rubio, Ben Carson and John R. Kasich — meet in Houston (8:30 p.m. Eastern, CNN and Telemundo).",
+      "user": {
+        "9": {
+          "text": "anything more Donald Trump?",
+          "followup": "12"
+        },
+        "10": {
+          "text": "not interested...",
+          "followup": "15"
+        },
+        "11": {
+          "text": "skip election news",
+          "followup": "17"
+        }
+      }
+    },
+    "12": {
+      "bot": "Many Republicans fear that Mr. Trump won’t back Speaker Paul D. Ryan’s conservative agenda if he wins the nomination. But there are five ways Mr. Trump could stumble: http://www.nytimes.com/2016/02/25/us/politics/donald-trump-path.html",
+      "user": {
+        "13": {
+          "text": "next",
+          "followup": "17"
+        },
+        "14": {
+          "text": "what about Bernie?",
+          "followup": "15"
+        }
+      }
+    },
+    "15": {
+      "bot": "Bernie Sanders, who is campaigning in Ohio and Illinois today, criticized Hillary Clinton’s support of a 1996 welfare reform bill, accusing her of backing legislation that ultimately increased poverty levels.",
+      "user": {
+        "16": {
+          "text": "next",
+          "followup": "17"
+        }
+      }
+    },
+    "17": {
+      "bot": "Parts of the Midwest can expect more heavy snow today, the National Weather Service says. Travelers should check their flight status, as there are hundreds of cancellations and delays.",
+      "followup": "18"
+    },
+    "18": {
+      "bot": "A storm system left seven dead in the South on Wednesday.",
+      "followup": "19"
+    },
+    "19": {
+      "bot": "That's it for today. Come back later. 😊",
+      "user": {
+        "20": {
+          "text": "🔁 Start it over again",
+          "followup": "1"
+        }
+      }
+    }
+  }
+}
