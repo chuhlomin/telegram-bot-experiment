@@ -13,7 +13,6 @@
     },
     "3": {
       "bot": " Apple engineers are developing new security measures that would make it harder for the government to break into a locked iPhone.",
-      "followup": "4",
       "user": {
         "4": {
           "text": "yeah?",
@@ -38,7 +37,7 @@
       "bot": " 🇺🇸 Debate night! The five remaining Republican candidates — Donald J. Trump, Ted Cruz, Marco Rubio, Ben Carson and John R. Kasich — meet in Houston (8:30 p.m. Eastern, CNN and Telemundo).",
       "user": {
         "9": {
-          "text": "anything more Donald Trump?",
+          "text": "more about Trump?",
           "followup": "12"
         },
         "10": {
