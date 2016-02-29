@@ -96,6 +96,7 @@ try {
             $telegram->sendMessage([
                 'chat_id' => $chatID,
                 'text' => $message,
+                'parse_mode' => 'Markdown',
                 'reply_markup' => $telegram->replyKeyboardMarkup(
                     [
                         'keyboard' => $options,
@@ -108,6 +109,7 @@ try {
             $telegram->sendMessage([
                 'chat_id' => $chatID,
                 'text' => $message,
+                'parse_mode' => 'Markdown',
                 'reply_markup' => $telegram->replyKeyboardHide(
                     [
                         'hide_keyboard' => true

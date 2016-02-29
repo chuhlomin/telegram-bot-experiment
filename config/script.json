@@ -12,7 +12,7 @@
       "followup": "3"
     },
     "3": {
-      "bot": " Apple engineers are developing new security measures that would make it harder for the government to break into a locked iPhone.",
+      "bot": " Apple engineers are developing new security measures that would make it harder for the [government to break into a locked iPhone](http://www.nytimes.com/2016/02/25/technology/apple-is-said-to-be-working-on-an-iphone-even-it-cant-hack.html).",
       "user": {
         "4": {
           "text": "yeah?",
@@ -25,7 +25,7 @@
       }
     },
     "6": {
-      "bot": "The company’s lawyers are preparing to submit a formal response to a court order that it help the F.B.I. unlock an iPhone, used by a mass shooter, by Friday. Apple says it will take the dispute all the way to the Supreme Court.",
+      "bot": "The company’s lawyers are preparing to submit a formal response to a court order that it help the F.B.I. unlock an iPhone, used by a mass shooter, by Friday. Apple says it will take the dispute [all the way to the Supreme Court](http://www.nytimes.com/reuters/2016/02/24/technology/24reuters-apple-encryption-timcook.html).",
       "user": {
         "7": {
           "text": "next",
@@ -34,7 +34,7 @@
       }
     },
     "8": {
-      "bot": " 🇺🇸 Debate night! The five remaining Republican candidates — Donald J. Trump, Ted Cruz, Marco Rubio, Ben Carson and John R. Kasich — meet in Houston (8:30 p.m. Eastern, CNN and Telemundo).",
+      "bot": " 🇺🇸 Debate night! The five remaining Republican candidates — Donald J. Trump, Ted Cruz, [Marco Rubio](http://www.nytimes.com/2016/02/25/us/politics/marco-rubio.html), Ben Carson and [John R. Kasich](http://www.nytimes.com/2016/02/25/upshot/john-kasich-republican-nomination.html) — meet in Houston (8:30 p.m. Eastern, CNN and Telemundo).",
       "user": {
         "9": {
           "text": "more about Trump?",
@@ -51,7 +51,7 @@
       }
     },
     "12": {
-      "bot": "Many Republicans fear that Mr. Trump won’t back Speaker Paul D. Ryan’s conservative agenda if he wins the nomination. But there are five ways Mr. Trump could stumble: http://www.nytimes.com/2016/02/25/us/politics/donald-trump-path.html",
+      "bot": "Many Republicans fear that Mr. Trump [won’t back Speaker Paul D. Ryan’s conservative agenda](http://www.nytimes.com/2016/02/25/us/politics/republican-race-puts-paul-ryan-and-donald-trump-on-collision-course.html) if he wins the nomination. But there are five ways Mr. Trump could stumble: http://www.nytimes.com/2016/02/25/us/politics/donald-trump-path.html",
       "user": {
         "13": {
           "text": "next",
@@ -64,7 +64,7 @@
       }
     },
     "15": {
-      "bot": "Bernie Sanders, who is campaigning in Ohio and Illinois today, criticized Hillary Clinton’s support of a 1996 welfare reform bill, accusing her of backing legislation that ultimately increased poverty levels.",
+      "bot": "Bernie Sanders, who is campaigning in Ohio and Illinois today, [criticized Hillary Clinton’s support](http://www.nytimes.com/politics/first-draft/2016/02/24/bernie-sanders-ties-hillary-clinton-to-poverty-caused-by-welfare-reform/) of a 1996 welfare reform bill, accusing her of backing legislation that ultimately increased poverty levels.",
       "user": {
         "16": {
           "text": "next",
@@ -73,11 +73,11 @@
       }
     },
     "17": {
-      "bot": "Parts of the Midwest can expect more heavy snow today, the National Weather Service says. Travelers should check their flight status, as there are hundreds of cancellations and delays.",
+      "bot": "Parts of the Midwest can expect [more heavy snow today](http://www.weather.gov/), the National Weather Service says. Travelers should [check their flight status](http://flightaware.com/), as there are hundreds of cancellations and delays.",
       "followup": "18"
     },
     "18": {
-      "bot": "A storm system left seven dead in the South on Wednesday.",
+      "bot": "A [storm system left seven dead](http://www.nytimes.com/2016/02/25/us/dangerous-storm-moves-up-east-coast-after-hammering-gulf-states.html) in the South on Wednesday.",
       "followup": "19"
     },
     "19": {
