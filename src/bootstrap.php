@@ -17,3 +17,6 @@ $memcached = new Memcached();
 $memcached->addServer('localhost', 11211);
 
 $telegram = new \Telegram\Bot\Api($config['bot_token']);
+
+$botan = new \src\models\Botan($config['botan_token']);
+$urlReplacer = new \src\models\UrlReplacer();

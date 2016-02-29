@@ -4,11 +4,11 @@
   "start": "1",
   "elements": {
     "1": {
-      "bot": "Good morning.",
+      "bot": "Good morning. (Pretend that today is Feb 27 😉)",
       "followup": "2"
     },
     "2": {
-      "bot": "Here’s what you need to know",
+      "bot": "Here’s what you need to know:",
       "followup": "3"
     },
     "3": {
@@ -51,15 +51,15 @@
       }
     },
     "12": {
-      "bot": "Many Republicans fear that Mr. Trump [won’t back Speaker Paul D. Ryan’s conservative agenda](http://www.nytimes.com/2016/02/25/us/politics/republican-race-puts-paul-ryan-and-donald-trump-on-collision-course.html) if he wins the nomination. But there are five ways Mr. Trump could stumble: http://www.nytimes.com/2016/02/25/us/politics/donald-trump-path.html",
+      "bot": "Many Republicans fear that Mr. Trump [won’t back Speaker Paul D. Ryan’s conservative agenda](http://www.nytimes.com/2016/02/25/us/politics/republican-race-puts-paul-ryan-and-donald-trump-on-collision-course.html) if he wins the nomination. But there are [five ways](http://www.nytimes.com/2016/02/25/us/politics/donald-trump-path.html) Mr. Trump could stumble.",
       "user": {
-        "13": {
-          "text": "next",
-          "followup": "17"
-        },
         "14": {
           "text": "what about Bernie?",
           "followup": "15"
+        },
+        "13": {
+          "text": "next",
+          "followup": "17"
         }
       }
     },

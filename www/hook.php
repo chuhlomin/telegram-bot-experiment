@@ -14,6 +14,8 @@ try {
     
     $update = $telegram->getWebhookUpdates();
 
+    $botan->track($update['message'], 'WebhookUpdate');
+
     $chatID = $update['message']['chat']['id'];
     $message = $update['message']['text'];
     $userID = $update['message']['from']['id']; // get user id
@@ -91,6 +93,8 @@ try {
             );
             sleep($typingType);
         }
+
+        $message = $urlReplacer->replaceUrls($botan, $message, $userID);
 
         if ($isLastMessage) {
             $telegram->sendMessage([
