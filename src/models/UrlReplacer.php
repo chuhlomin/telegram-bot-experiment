@@ -4,7 +4,15 @@ namespace src\models;
 
 class UrlReplacer
 {
-    public function replaceUrls(Botan $botan, $message, $userID)
+    /** @var Botan */
+    private $botan;
+
+    public function __construct(Botan $botan)
+    {
+        $this->botan = $botan;
+    }
+    
+    public function replaceUrls($message, $userID)
     {
         preg_match_all('/\[.+?\]\((.+?)\)/', $message, $matches);
 
@@ -15,7 +23,7 @@ class UrlReplacer
         $urls = array_flip($matches[1]);
 
         foreach ($urls as $originalURL => &$value) {
-            $value = $botan->shortenUrl($originalURL, $userID);
+            $value = $this->botan->shortenUrl($originalURL, $userID);
         }
         
         return strtr($message, $urls);

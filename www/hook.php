@@ -10,8 +10,6 @@ include BASEDIR . '/vendor/autoload.php';
 include BASEDIR . '/src/bootstrap.php';
 
 try {
-    $script = json_decode(file_get_contents(BASEDIR . '/config/script.json'), true);
-    
     $update = $telegram->getWebhookUpdates();
 
     $botan->track($update['message'], 'WebhookUpdate');
@@ -20,6 +18,7 @@ try {
     $message = $update['message']['text'];
     $userID = $update['message']['from']['id']; // get user id
 
+    $script = json_decode(file_get_contents(BASEDIR . '/config/script.json'), true);
     $stateID = $memcached->get('state:' . $userID) ?: $script['start']; // get current user state
 
     $monolog->addInfo(
@@ -71,57 +70,8 @@ try {
     $options = $state->getResponseOptions();
     $monolog->addDebug(sprintf('User options: %s', json_encode($options)));
 
-    $lastMessage = end($messages);
-    $monolog->addDebug(sprintf('Last message should be: %s', $lastMessage));
-
-    foreach ($messages as $message) {
-        $monolog->addDebug(sprintf('Current message: %s', $message));
-        $isLastMessage = ($message === $lastMessage);
-        $monolog->addDebug(sprintf('Is last: %s', var_export($isLastMessage, true)));
-        $monolog->addDebug(sprintf('Options are: %s', json_encode($options)));
-
-        // avg person write 250 words in a minute -> 250 words in a 60 sec -> 4.16666667 in sec
-        // but it's too slow for UX, so 2 sec
-        $typingType = min(str_word_count($message) / 2, 3);
-
-        if ($typingType > 1) { // with less amount of seconds you will not notice that "typing" action
-            $telegram->sendChatAction(
-                [
-                    'chat_id' => $chatID,
-                    'action' => 'typing'
-                ]
-            );
-            sleep($typingType);
-        }
-
-        $message = $urlReplacer->replaceUrls($botan, $message, $userID);
-
-        if ($isLastMessage) {
-            $telegram->sendMessage([
-                'chat_id' => $chatID,
-                'text' => $message,
-                'parse_mode' => 'Markdown',
-                'reply_markup' => $telegram->replyKeyboardMarkup(
-                    [
-                        'keyboard' => $options,
-                        'resize_keyboard' => true,
-                        'one_time_keyboard' => false
-                    ]
-                )
-            ]);
-        } else {
-            $telegram->sendMessage([
-                'chat_id' => $chatID,
-                'text' => $message,
-                'parse_mode' => 'Markdown',
-                'reply_markup' => $telegram->replyKeyboardHide(
-                    [
-                        'hide_keyboard' => true
-                    ]
-                )
-            ]);
-        }
-    }
+    $sender->sendMessages($chatID, $userID, $message, $options);
+    
 } catch (\Exception $e) {
     $message = 'Error...';
     $monolog->addError(
