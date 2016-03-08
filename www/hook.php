@@ -18,17 +18,17 @@ try {
     $message = $update['message']['text'];
     $userID = $update['message']['from']['id']; // get user id
 
+    $monolog->addInfo(
+        'IN',
+        [
+            'channel' => 'telegram',
+            'user_id' => $userID,
+            'message' => $message
+        ]
+    );
+
     $script = json_decode(file_get_contents(BASEDIR . '/config/script.json'), true);
     $stateID = $memcached->get('state:' . $userID) ?: $script['start']; // get current user state
-
-    $monolog->addInfo(
-        sprintf(
-            'user_id:%s state:%s message:%s',
-            $userID,
-            $stateID,
-            $message
-        )
-    );
 
     $state = new \src\models\State($script, $stateID);
 
@@ -70,7 +70,7 @@ try {
     $options = $state->getResponseOptions();
     $monolog->addDebug(sprintf('User options: %s', json_encode($options)));
 
-    $sender->sendMessages($chatID, $userID, $message, $options);
+    $sender->sendMessages($chatID, $userID, $messages, $options);
     
 } catch (\Exception $e) {
     $message = 'Error...';

@@ -50,6 +50,15 @@ class Sender
 
             $message = $this->urlReplacer->replaceUrls($message, $userID);
 
+            $this->logger->addInfo(
+                'OUT',
+                [
+                    'channel' => 'telegram',
+                    'user_id' => $userID,
+                    'message' => $message
+                ]
+            );
+
             if ($isLastMessage) {
                 $this->telegram->sendMessage([
                     'chat_id' => $chatID,
