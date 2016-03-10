@@ -34,19 +34,8 @@ class Sender
             $this->logger->addDebug(sprintf('Is last: %s', var_export($isLastMessage, true)));
             $this->logger->addDebug(sprintf('Options are: %s', json_encode($options)));
 
-            // avg person write 250 words in a minute -> 250 words in a 60 sec -> 4.16666667 in sec
-            // but it's too slow for UX, so 2 sec
-            $typingType = min(str_word_count($message) / 2, 3);
-
-            if ($typingType > 1) { // with less amount of seconds you will not notice that "typing" action
-                $this->telegram->sendChatAction(
-                    [
-                        'chat_id' => $chatID,
-                        'action' => 'typing'
-                    ]
-                );
-                sleep($typingType);
-            }
+            // do not delay, network can be slow enough itself :-)
+            // yes, we loosing imitation of typing...
 
             $message = $this->urlReplacer->replaceUrls($message, $userID);
 

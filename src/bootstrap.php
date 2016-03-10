@@ -9,9 +9,10 @@ $configFileContent = file_get_contents(BASEDIR . '/config/default.yaml');
 $config = $parser->parse($configFileContent);
 
 $monolog = new \Monolog\Logger('telegram_bot');
-$monolog->pushHandler(
-    new \Monolog\Handler\StreamHandler('/var/log/telegram-bot-experiment/hook.log', \Monolog\Logger::INFO)
-);
+$formatter = new \Monolog\Formatter\LineFormatter(null, 'c');
+$handler = new \Monolog\Handler\StreamHandler('/var/log/telegram-bot-experiment/hook.log', \Monolog\Logger::INFO);
+$handler->setFormatter($formatter);
+$monolog->pushHandler($handler);
 
 $memcached = new Memcached();
 $memcached->addServer('localhost', 11211);

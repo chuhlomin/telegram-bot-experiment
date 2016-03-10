@@ -17,20 +17,27 @@ try {
     $chatID = $update['message']['chat']['id'];
     $message = $update['message']['text'];
     $userID = $update['message']['from']['id']; // get user id
+    $campaign = $memcached->get('campaign:' . $userID) ?: 0;
+
+    $stateID = $memcached->get('state:' . $userID) ?: 0;
+
+    $script = json_decode(file_get_contents(BASEDIR . '/config/script.json'), true);
+
+    if ($stateID === 0) {
+        $stateID = $script['start'];
+    }
+
+    $state = new \src\models\State($script, $stateID);
 
     $monolog->addInfo(
         'IN',
         [
             'channel' => 'telegram',
             'user_id' => $userID,
+            'state_id' => $stateID,
             'message' => $message
         ]
     );
-
-    $script = json_decode(file_get_contents(BASEDIR . '/config/script.json'), true);
-    $stateID = $memcached->get('state:' . $userID) ?: $script['start']; // get current user state
-
-    $state = new \src\models\State($script, $stateID);
 
     $messages = [];
     $shouldGetBotMessages = true;
